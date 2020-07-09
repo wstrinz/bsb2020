@@ -1,11 +1,15 @@
 module Main exposing (main)
 
-import Html exposing (text)
-import Html.Attributes exposing (attribute)
+import Components.Button as Button
+import Html exposing (Html)
 
 
+main : Html msg
 main =
-    Html.node "mwc-button" [ attribute "label" "MWC Button", attribute "raised" "raised" ] []
+    Button.new
+        |> Button.raised True
+        |> Button.label "Componentized!"
+        |> Button.render
 
 
 
