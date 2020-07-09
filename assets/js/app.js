@@ -1,8 +1,9 @@
 // We need to import the CSS so that webpack will load it.
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
-import "../css/app.scss"
+import "../css/app.scss";
 import { Elm } from "../src/Main.elm";
+import "@material/mwc-button";
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
@@ -13,8 +14,8 @@ import { Elm } from "../src/Main.elm";
 //     import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
-import "phoenix_html"
+import "phoenix_html";
 
 var app = Elm.Main.init({
-    node: document.getElementById('elm-main')
+  node: document.getElementById("elm-main"),
 });

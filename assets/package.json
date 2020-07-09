@@ -13,6 +13,8 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@material/mwc-button": "^0.17.2",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
