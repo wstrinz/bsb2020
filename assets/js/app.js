@@ -3,7 +3,6 @@
 // its own CSS file.
 import "../css/app.scss";
 import { Elm } from "../src/Main.elm";
-import "@material/mwc-button";
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
