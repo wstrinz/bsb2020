@@ -83,9 +83,12 @@ mainContent : Model -> Html Msg
 mainContent model =
     Html.div [ DismissibleDrawer.appContent ]
         [ titleBar model
-        , Button.raised
-            (Button.config |> Button.setOnClick Inc)
-            ("Counter is " ++ String.fromInt model.count)
+        , Html.div
+            [ TopAppBar.fixedAdjust ]
+            [ Button.raised
+                (Button.config |> Button.setOnClick Inc)
+                ("Counter is " ++ String.fromInt model.count)
+            ]
         ]
 
 
