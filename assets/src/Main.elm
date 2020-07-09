@@ -1,7 +1,8 @@
 module Main exposing (main)
 
 import Browser exposing (Document)
-import Components.Button as Button
+import Components.Button as BSBButton
+import Material.Button as Button
 import Types exposing (Model, Msg(..))
 
 
@@ -20,13 +21,12 @@ type alias Flags =
 
 
 view : Model -> Document Msg
-view _ =
+view model =
     { title = "BSB 2020"
     , body =
-        [ Button.new
-            |> Button.raised True
-            |> Button.label "Componentized!"
-            |> Button.render
+        [ Button.raised
+            (Button.config |> Button.setOnClick Inc)
+            ("Counter is " ++ String.fromInt model.count)
         ]
     }
 
@@ -38,8 +38,7 @@ init _ =
 
 initialModel : Model
 initialModel =
-    { foo = "oof"
-    , bar = "rab"
+    { count = 0
     }
 
 
@@ -48,6 +47,9 @@ update msg model =
     case msg of
         Noop ->
             ( model, Cmd.none )
+
+        Inc ->
+            ( { model | count = model.count + 1 }, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
