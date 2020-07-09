@@ -18,4 +18,5 @@ import "phoenix_html";
 
 var app = Elm.Main.init({
   node: document.getElementById("elm-main"),
+  flags: [],
 });
