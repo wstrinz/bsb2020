@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser exposing (Document)
 import Components.Button as BSBButton
-import Html exposing (Html, text)
+import Html exposing (Html, div, h1, h2, p, text)
 import Html.Attributes exposing (style)
 import Material.Button as Button
 import Material.Drawer.Dismissible as DismissibleDrawer
@@ -10,7 +10,7 @@ import Material.IconButton as IconButton
 import Material.List as List
 import Material.List.Item as ListItem
 import Material.TopAppBar as TopAppBar
-import Types exposing (Model, Msg(..))
+import Types exposing (Model, Msg(..), Story, initialModel)
 
 
 main : Program Flags Model Msg
@@ -88,20 +88,31 @@ mainContent model =
             [ Button.raised
                 (Button.config |> Button.setOnClick Inc)
                 ("Counter is " ++ String.fromInt model.count)
+            , storiesView model
             ]
+        ]
+
+
+storiesView : Model -> Html Msg
+storiesView model =
+    Html.div
+        []
+    <|
+        List.map storyView model.stories
+
+
+storyView : Story -> Html Msg
+storyView story =
+    div []
+        [ h1 [] [ text story.title ]
+        , h2 [] [ text story.feedTitle ]
+        , p [] [ text story.content ]
         ]
 
 
 init : Flags -> ( Model, Cmd Msg )
 init _ =
     ( initialModel, Cmd.none )
-
-
-initialModel : Model
-initialModel =
-    { count = 0
-    , menuOpen = False
-    }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
