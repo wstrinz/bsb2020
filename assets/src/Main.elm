@@ -8,6 +8,7 @@ import Json.Decode.Pipeline exposing (hardcoded, required)
 import Material.Button as Button
 import Material.Drawer.Dismissible as DismissibleDrawer
 import Material.IconButton as IconButton
+import Material.LinearProgress as LinearProgress
 import Material.List as List
 import Material.List.Item as ListItem
 import Material.TopAppBar as TopAppBar
@@ -99,10 +100,12 @@ mainContent model =
 
 storiesView : Model -> Html Msg
 storiesView model =
-    Html.div
-        []
-    <|
-        List.map storyView model.stories
+    case model.storiesRemoteData of
+        RemoteData.Success _ ->
+            Html.div [] <| List.map storyView model.stories
+
+        _ ->
+            LinearProgress.indeterminate LinearProgress.config
 
 
 storyView : Story -> Html Msg
