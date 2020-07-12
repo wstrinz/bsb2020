@@ -12,6 +12,7 @@ RUN mix local.hex --force && \
 
 # set build ENV
 ENV MIX_ENV=prod
+ENV DATABASE_URL=postgres://postgres@db:5432/bsb
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
@@ -47,4 +48,4 @@ COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/bsb ./
 
 ENV HOME=/app
 
-CMD ["bin/bsb", "start"]
+CMD [ "bin/bsb", "start" ]
