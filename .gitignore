@@ -38,3 +38,6 @@ _build
 .elixir_ls
 
 /assets/elm-stuff
+
+.vscode
+
