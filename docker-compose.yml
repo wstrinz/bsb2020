@@ -1,0 +1,36 @@
+version: "3.5"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.bsb
+    volumes:
+      - type: bind
+        source: .
+        target: /home/bsb/app
+      - type: volume
+        source: deps
+        target: /home/bsb/app/deps
+      - type: volume
+        source: build
+        target: /home/bsb/app/build
+    environment:
+      - DATABASE_URL=postgres://postgres@db:5432/bsb
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"
+    command: "./run.sh"
+  db:
+    image: postgres:11.4-alpine
+    command: 'postgres -c "max_connections=200"'
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
+volumes:
+  postgres-data:
+  deps:
+  build:
