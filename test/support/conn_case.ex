@@ -1,4 +1,4 @@
-defmodule BsbWeb.ConnCase do
+defmodule BSBWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule BsbWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use BsbWeb.ConnCase, async: true`, although
+  by setting `use BSBWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,20 +22,20 @@ defmodule BsbWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import BsbWeb.ConnCase
+      import BSBWeb.ConnCase
 
-      alias BsbWeb.Router.Helpers, as: Routes
+      alias BSBWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint BsbWeb.Endpoint
+      @endpoint BSBWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Bsb.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BSB.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Bsb.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(BSB.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

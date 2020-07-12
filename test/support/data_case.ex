@@ -1,4 +1,4 @@
-defmodule Bsb.DataCase do
+defmodule BSB.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Bsb.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Bsb.DataCase, async: true`, although
+  by setting `use BSB.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule Bsb.DataCase do
 
   using do
     quote do
-      alias Bsb.Repo
+      alias BSB.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Bsb.DataCase
+      import BSB.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Bsb.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BSB.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Bsb.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(BSB.Repo, {:shared, self()})
     end
 
     :ok

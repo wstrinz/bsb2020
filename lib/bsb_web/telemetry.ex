@@ -1,4 +1,4 @@
-defmodule BsbWeb.Telemetry do
+defmodule BSBWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -49,7 +49,7 @@ defmodule BsbWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {BsbWeb, :count_users, []}
+      # {BSBWeb, :count_users, []}
     ]
   end
 end

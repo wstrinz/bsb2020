@@ -8,14 +8,14 @@
 use Mix.Config
 
 config :bsb,
-  ecto_repos: [Bsb.Repo]
+  ecto_repos: [BSB.Repo]
 
 # Configures the endpoint
-config :bsb, BsbWeb.Endpoint,
+config :bsb, BSBWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Q97kvJFHhu2m3L5e43NWS0CtgRgpM/P8qqX3LapD4VckB/LwU+sAIZwHuJSSbLKz",
-  render_errors: [view: BsbWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Bsb.PubSub,
+  render_errors: [view: BSBWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: BSB.PubSub,
   live_view: [signing_salt: "EzVb+0w9"]
 
 # Configures Elixir's Logger

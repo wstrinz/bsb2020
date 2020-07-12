@@ -1,12 +1,12 @@
-defmodule BsbWeb do
+defmodule BSBWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use BsbWeb, :controller
-      use BsbWeb, :view
+      use BSBWeb, :controller
+      use BSBWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,12 +19,12 @@ defmodule BsbWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: BsbWeb
+      use Phoenix.Controller, namespace: BSBWeb
 
       import Plug.Conn
-      import BsbWeb.Gettext
+      import BSBWeb.Gettext
 
-      alias BsbWeb.Router.Helpers, as: Routes
+      alias BSBWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -32,7 +32,7 @@ defmodule BsbWeb do
     quote do
       use Phoenix.View,
         root: "lib/bsb_web/templates",
-        namespace: BsbWeb
+        namespace: BSBWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -55,7 +55,7 @@ defmodule BsbWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import BsbWeb.Gettext
+      import BSBWeb.Gettext
     end
   end
 
@@ -67,9 +67,9 @@ defmodule BsbWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import BsbWeb.ErrorHelpers
-      import BsbWeb.Gettext
-      alias BsbWeb.Router.Helpers, as: Routes
+      import BSBWeb.ErrorHelpers
+      import BSBWeb.Gettext
+      alias BSBWeb.Router.Helpers, as: Routes
     end
   end
 

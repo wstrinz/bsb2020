@@ -1,5 +1,5 @@
-defmodule BsbWeb.Router do
-  use BsbWeb, :router
+defmodule BSBWeb.Router do
+  use BSBWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule BsbWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", BsbWeb do
+  scope "/", BSBWeb do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BsbWeb do
+  # scope "/api", BSBWeb do
   #   pipe_through :api
   # end
 
@@ -36,7 +36,7 @@ defmodule BsbWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: BsbWeb.Telemetry
+      live_dashboard "/dashboard", metrics: BSBWeb.Telemetry
     end
   end
 end

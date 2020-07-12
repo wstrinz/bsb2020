@@ -1,4 +1,4 @@
-defmodule BsbWeb.Endpoint do
+defmodule BSBWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :bsb
 
   # The session will be stored in the cookie and signed,
@@ -10,7 +10,7 @@ defmodule BsbWeb.Endpoint do
     signing_salt: "KiUjkIL6"
   ]
 
-  socket "/socket", BsbWeb.UserSocket,
+  socket "/socket", BSBWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -50,5 +50,5 @@ defmodule BsbWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug BsbWeb.Router
+  plug BSBWeb.Router
 end

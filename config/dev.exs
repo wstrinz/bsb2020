@@ -1,7 +1,7 @@
 use Mix.Config
 
 # Configure your database
-config :bsb, Bsb.Repo,
+config :bsb, BSB.Repo,
   username: "postgres",
   password: "postgres",
   database: "bsb_dev",
@@ -15,7 +15,7 @@ config :bsb, Bsb.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :bsb, BsbWeb.Endpoint,
+config :bsb, BSBWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,7 +55,7 @@ config :bsb, BsbWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :bsb, BsbWeb.Endpoint,
+config :bsb, BSBWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",

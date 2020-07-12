@@ -1,3 +1,3 @@
-defmodule BsbWeb.PageView do
-  use BsbWeb, :view
+defmodule BSBWeb.PageView do
+  use BSBWeb, :view
 end
