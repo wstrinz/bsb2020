@@ -11,7 +11,7 @@ defmodule BsbWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    resources "/stories", StoryController, except: [:new, :edit]
+    resources "/stories", BsbWeb.StoryController, except: [:new, :edit]
   end
 
   scope "/", BsbWeb do

@@ -1,5 +1,6 @@
-module Types exposing (Model, Msg(..), Story, initialModel)
+module Types exposing (Model, Msg(..), Story, StoryList, dummyStories, initialModel)
 
+import RemoteData exposing (RemoteData(..), WebData)
 import String exposing (String)
 
 
@@ -7,6 +8,7 @@ type alias Model =
     { count : Int
     , menuOpen : Bool
     , stories : List Story
+    , storiesRemoteData : WebData StoryList
     }
 
 
@@ -14,6 +16,12 @@ type Msg
     = Noop
     | Inc
     | SetMenuOpen Bool
+    | FetchStories
+    | FetchStoriesResponse (WebData StoryList)
+
+
+type alias StoryList =
+    List Story
 
 
 type alias Story =
@@ -28,6 +36,7 @@ initialModel =
     { count = 0
     , menuOpen = False
     , stories = dummyStories
+    , storiesRemoteData = RemoteData.NotAsked
     }
 
 

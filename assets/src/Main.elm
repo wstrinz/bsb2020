@@ -1,16 +1,20 @@
 module Main exposing (main)
 
 import Browser exposing (Document)
-import Components.Button as BsbButton
 import Html exposing (Html, div, h1, h2, p, text)
 import Html.Attributes exposing (style)
+import Json.Decode
+import Json.Decode.Pipeline exposing (hardcoded, required)
 import Material.Button as Button
 import Material.Drawer.Dismissible as DismissibleDrawer
 import Material.IconButton as IconButton
 import Material.List as List
 import Material.List.Item as ListItem
 import Material.TopAppBar as TopAppBar
-import Types exposing (Model, Msg(..), Story, initialModel)
+import RemoteData
+import RemoteData.Http
+import Task
+import Types exposing (Model, Msg(..), Story, StoryList, initialModel)
 
 
 main : Program Flags Model Msg
@@ -86,8 +90,8 @@ mainContent model =
         , Html.div
             [ TopAppBar.fixedAdjust ]
             [ Button.raised
-                (Button.config |> Button.setOnClick Inc)
-                ("Counter is " ++ String.fromInt model.count)
+                (Button.config |> Button.setOnClick FetchStories)
+                ("Fetch " ++ String.fromInt (List.length model.stories))
             , storiesView model
             ]
         ]
@@ -112,7 +116,7 @@ storyView story =
 
 init : Flags -> ( Model, Cmd Msg )
 init _ =
-    ( initialModel, Cmd.none )
+    ( initialModel, Task.succeed FetchStories |> Task.perform (\x -> x) )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -126,6 +130,32 @@ update msg model =
 
         SetMenuOpen isOpen ->
             ( { model | menuOpen = isOpen }, Cmd.none )
+
+        FetchStories ->
+            ( { model | storiesRemoteData = RemoteData.Loading }
+            , RemoteData.Http.get "/stories" FetchStoriesResponse storiesDecoder
+            )
+
+        FetchStoriesResponse stories ->
+            case stories of
+                RemoteData.Success storyList ->
+                    ( { model | stories = storyList, storiesRemoteData = stories }, Cmd.none )
+
+                _ ->
+                    ( { model | storiesRemoteData = stories }, Cmd.none )
+
+
+storiesDecoder : Json.Decode.Decoder StoryList
+storiesDecoder =
+    Json.Decode.field "data" (Json.Decode.list storyDecoder)
+
+
+storyDecoder : Json.Decode.Decoder Story
+storyDecoder =
+    Json.Decode.succeed Story
+        |> required "title" Json.Decode.string
+        |> hardcoded "fake feed title"
+        |> required "content" Json.Decode.string
 
 
 subscriptions : Model -> Sub Msg

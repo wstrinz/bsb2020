@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+Bsb.Repo.insert!(%Bsb.Soup.Story{
+  title: "Title",
+  read: false,
+  content: "<h3>Content</h3>",
+  summary: "Summary",
+  score: 99.0,
+  url: "http://bsb.stri.nz"
+})
