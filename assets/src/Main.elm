@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Browser exposing (Document)
-import Components.Button as BSBButton
+import Components.Button as BsbButton
 import Html exposing (Html, div, h1, h2, p, text)
 import Html.Attributes exposing (style)
 import Material.Button as Button
@@ -29,7 +29,7 @@ type alias Flags =
 
 view : Model -> Document Msg
 view model =
-    { title = "BSB 2020"
+    { title = "Bsb 2020"
     , body = [ mainBody model ]
     }
 
@@ -58,7 +58,7 @@ titleBar model =
                     )
                     "menu"
                 , Html.span [ TopAppBar.title ]
-                    [ text "BSB 2020" ]
+                    [ text "Bsb 2020" ]
                 ]
             ]
         ]

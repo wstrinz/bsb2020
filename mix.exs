@@ -1,4 +1,4 @@
-defmodule BSB.MixProject do
+defmodule Bsb.MixProject do
   use Mix.Project
 
   def project do
@@ -19,7 +19,7 @@ defmodule BSB.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {BSB.Application, []},
+      mod: {Bsb.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

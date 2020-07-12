@@ -1,4 +1,4 @@
-# BSB
+# Bsb
 
 To start your Phoenix server:
 

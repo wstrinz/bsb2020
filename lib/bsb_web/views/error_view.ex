@@ -1,5 +1,5 @@
-defmodule BSBWeb.ErrorView do
-  use BSBWeb, :view
+defmodule BsbWeb.ErrorView do
+  use BsbWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

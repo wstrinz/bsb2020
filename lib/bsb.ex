@@ -1,6 +1,6 @@
-defmodule BSB do
+defmodule Bsb do
   @moduledoc """
-  BSB keeps the contexts that define your domain
+  Bsb keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

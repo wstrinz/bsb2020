@@ -1,5 +1,5 @@
-defmodule BSBWeb.PageControllerTest do
-  use BSBWeb.ConnCase
+defmodule BsbWeb.PageControllerTest do
+  use BsbWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

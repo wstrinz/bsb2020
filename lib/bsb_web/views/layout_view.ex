@@ -1,3 +1,3 @@
-defmodule BSBWeb.LayoutView do
-  use BSBWeb, :view
+defmodule BsbWeb.LayoutView do
+  use BsbWeb, :view
 end

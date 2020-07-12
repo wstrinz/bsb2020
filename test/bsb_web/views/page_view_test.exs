@@ -1,3 +1,3 @@
-defmodule BSBWeb.PageViewTest do
-  use BSBWeb.ConnCase, async: true
+defmodule BsbWeb.PageViewTest do
+  use BsbWeb.ConnCase, async: true
 end
